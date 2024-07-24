@@ -210,8 +210,8 @@ while game_running:
     player.render(window)
 
     pygame.display.flip()    
-```
 </details>
+```
 
 
 

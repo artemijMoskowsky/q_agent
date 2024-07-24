@@ -12,7 +12,8 @@
 - pygame - для визуального отображения
 
 ## Модули проекта
-### game.py
+<details>
+  <summary>game.py</summary>
 Модуль в котором прописана основная часть игры, классы блока, персонажа, основной цикл игры, импортированы все остальные модули. А так же этот модуль является главным для запуска.
 ```python
 import pygame
@@ -210,8 +211,12 @@ while game_running:
 
     pygame.display.flip()    
 ```
+</details>
 
-### py_mapper.py
+
+
+<details>
+  <summary>py_mapper.py</summary>
 Модуль в котором подгружается карта из картинки, он сделан для того чтобы можно было удобно создавать карту
 ```python
 import cv2
@@ -229,6 +234,8 @@ def load_map(map_size: tuple, file_name):
             index += 1
     return py_map
 ```
+</details>
+
 
 ### q_agent.py
 Модуль в котором прописан класс q агента, все его свойства и методы.

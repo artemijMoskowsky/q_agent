@@ -279,3 +279,53 @@ class Agent:
         # Обновляем таблицу используя модифицированное уравнение Беллмана
         self.q_table[round(x), round(y), action] = (1 - self.alpha) * self.q_table[round(x), round(y), action] + self.alpha * (reward + self.gamma * np.max(self.q_table[round(next_x), round(next_y)]))
 ```
+## Примечания
+В проект прикреплены данные после моего обучения, они сохранены как brain.json. Желательно этот файл удалить, это поможет вам отследить что ваш агент выполнил цель (после того как он проходит лабиринт этот файл создастся если его не было ранее). Так же, когда ваш агент достаточно обучился, вы можете выключить программу и зайти в файл q_agent.py и изменить следующий код:
+
+<br>
+Было:
+```python
+   def __init__(self, x_space, y_space, action_space):
+        self.alpha = 0.1
+        self.gamma = 0.99
+        self.epsilon = 0.1
+        # Задаём размерность состояний х
+        self.x_space = x_space
+        # Задаём размерность состояний у
+        self.y_space = y_space
+        # Задаём размерность действий
+        self.action_space = action_space
+
+        # Создаём пустую таблицу
+        self.q_table = np.zeros((x_space, y_space, action_space))
+
+        # Если вы уже обучили агента, можете подгрузить данные из файла
+        # with open("brain.json", "r") as file:
+        #     self.q_table = np.array(json.loads(file.read())["data"])
+
+        # ВАЖНО! Если вы обучили нейросеть, то поставьте epsilon на 0
+```
+
+<br>
+Стало
+```python
+    def __init__(self, x_space, y_space, action_space):
+        self.alpha = 0.1
+        self.gamma = 0.99
+        self.epsilon = 0.0
+        # Задаём размерность состояний х
+        self.x_space = x_space
+        # Задаём размерность состояний у
+        self.y_space = y_space
+        # Задаём размерность действий
+        self.action_space = action_space
+
+        # Создаём пустую таблицу
+        # self.q_table = np.zeros((x_space, y_space, action_space))
+
+        # Если вы уже обучили агента, можете подгрузить данные из файла
+        with open("brain.json", "r") as file:
+            self.q_table = np.array(json.loads(file.read())["data"])
+
+        # ВАЖНО! Если вы обучили нейросеть, то поставьте epsilon на 0
+```

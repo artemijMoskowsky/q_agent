@@ -1,6 +1,6 @@
 # Q Агент учится проходить лабиринт
 ## Разработчики
- - Московский Артемий(https://github.com/artemijMoskowsky)
+ - [Московский Артемий](https://github.com/artemijMoskowsky)
 
 ## Модули
 - numpy - для массивов нейросети
